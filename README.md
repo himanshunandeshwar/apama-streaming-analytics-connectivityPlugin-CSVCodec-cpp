@@ -21,7 +21,7 @@ First, ensure you have an install of the Apama engine; a free edition is availab
    - Execute ```make release```
    
    This should create a *CSVCodec.dll* in *connectivity-plugin-csvcodec-sample\CSVCodec\x64\Release folder.*
-2) Copy and Paste the generated *CSVCodec.dll* to *C:\Users\Public\SoftwareAG\ApamaWork_10.3\lib*.
+2) Copy and Paste the generated *CSVCodec.dll* to *%APAMA_WORK%\lib*.
 3) Copy and Paste CSVSender folder to Software AG Designer Workspace. Let's call this Workspace as **Workspace1**.
 4) Copy and PAste CSVReceiver folder to SOftware AG Designer Workspace which is *different* from Workspace1. Let's call this Workspace as **Workspace2**.
 5) Open CSVReciever in Software AG Designer from Workspace1-

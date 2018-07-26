@@ -1,0 +1,14 @@
+using com.softwareag.connectivity.ConnectivityPlugins;
+/** This monitor is responsible for receiving events...  */
+monitor LineMonior {
+	action onload() {
+		log "Loaded monitor LineMonior" at INFO;
+		//Recieve Event from MQTT Broker
+		monitor.subscribe("mqtt:/csvtest");
+			on all Line() as line {
+				log "Received from mqtt: " + line.toString();
+			}
+			
+			ConnectivityPlugins.onApplicationInitialized();
+	}
+}

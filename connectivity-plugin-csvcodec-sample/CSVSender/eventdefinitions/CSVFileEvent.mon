@@ -1,0 +1,8 @@
+/**
+* Event details from file
+*/
+event Line {
+	string name;
+	integer number;
+	string email;
+}

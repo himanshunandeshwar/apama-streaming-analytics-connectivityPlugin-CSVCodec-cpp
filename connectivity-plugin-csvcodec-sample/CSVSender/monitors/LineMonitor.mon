@@ -1,0 +1,16 @@
+using com.softwareag.connectivity.ConnectivityPlugins;
+/** This monitor is responsible for sending event...  */
+monitor LineMonitor {
+	action onload() {
+		log "Loaded monitor LineMonitor" at INFO;
+		on all wait(5.0) {
+			//Sending Event to MQTT Broker
+			string name:="John";
+			integer number:=126;
+			string email:="john@abc.com";
+			
+			send Line(name,number,email) to "mqtt:/csvtest";
+			
+		}
+	}
+}

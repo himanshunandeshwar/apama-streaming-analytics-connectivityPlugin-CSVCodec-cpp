@@ -1,0 +1,72 @@
+# $Copyright (c) 2016,2018 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA, and/or its subsidiaries and/or its affiliates and/or their licensors.$
+# Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG
+# This is a YAML configuration file. See the associated .properties file for an 
+# easy way to change the most commonly needed configuration settings. 
+#
+# When editing YAML files, be sure to use spaces (not tabs) for indentation. 
+# List entries are denoted by a line beginning with hyphen and space ("- ").
+# Map key and value pairs are separated by a colon and new line or space ("key: value").
+# Empty strings and those that need escaping should be surrounded by double-quotes ("...").
+# Apama replaces ${prop} substitution variables with the configured value of the 
+# specified property, taken from the command line or from .properties files. 
+#
+
+###########################################################################################
+# MQTT connectivity configuration for sending/receiving events to/from an MQTT broker 
+#
+# Most user-accessible configuration is available and documented in the properties file,
+# except for the codecs used to do the EPL <-> binary message translation.
+###########################################################################################
+
+connectivityPlugins:
+  MQTTTransport:
+    libraryName: connectivity-mqtt
+    class: MQTTTransport
+    
+  CSVCodec:
+    libraryName: CSVCodec
+    class: CSVCodec
+
+# The chain manager, responsible for the connection to MQTT
+dynamicChainManagers:
+  MQTTManager:
+    transport: MQTTTransport
+    managerConfig:
+      # WARNING: If you are using multiple MQTT bundles, make sure that each chain manager
+      # is configured with a distinct prefix to avoid unexpected behaviour
+      channelPrefix: ${MQTT_channelPrefix}
+      brokerURL: ${MQTT_brokerURL}
+      certificateAuthorityFile: ${MQTT_certificateAuthorityFile}
+      acceptUnrecognizedCertificates: ${MQTT_acceptUnrecognizedCertificates}
+      authentication:
+        username: ${MQTT_username}
+        password: ${MQTT_password}
+        certificateFile: ${MQTT_certificateFile}
+        certificatePassword: ${MQTT_certificatePassword}
+        privateKeyFile: ${MQTT_privateKeyFile}
+
+# One or more chain templates from which a dynamic chain will be created for each channel handled by this plug-in
+dynamicChains:
+  MQTTChain:
+    - apama.eventMap:
+        defaultEventType: Line
+        suppressLoopback: true
+        allowMissing: true
+        
+    # Codec that logs message contents during testing/debugging - should be commented out in production
+    - diagnosticCodec:
+        tag: after
+    
+    - CSVCodec:
+       csvHeader:
+       - name
+       - number
+       - email
+       
+    - diagnosticCodec:
+        tag: before
+    
+    - stringCodec:
+        nullTerminated: false
+    
+    - MQTTTransport

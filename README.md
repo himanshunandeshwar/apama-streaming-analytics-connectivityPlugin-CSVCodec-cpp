@@ -14,16 +14,16 @@ First, ensure you have an install of the Apama engine; a free edition is availab
    Apama architecture you are building against; this typically means running:
    "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" amd64
    
-   - Change Directory where make file is present. (\connectivity-plugin-csvcodec-sample\CSVCodec)
+   - Change Directory where make file is present. ( *\connectivity-plugin-csvcodec-sample\CSVCodec* )
    
    - Execute ```make clean```
    
    - Execute ```make release```
    
-   This should create a CSVCodec.dll in connectivity-plugin-csvcodec-sample\CSVCodec\x64\Release folder.
-2) Copy and Paste the generated CSVCodec.dll to C:\SoftwareAG\Apama\bin.
-3) Copy and Paste CSVSender folder to Software AG Designer Workspace. Let's call this Workspace as Workspace1.
-4) Copy and PAste CSVReceiver folder to SOftware AG Designer Workspace which is different from Workspace1. Let's call this Workspace as Workspace2.
+   This should create a *CSVCodec.dll* in *connectivity-plugin-csvcodec-sample\CSVCodec\x64\Release folder.*
+2) Copy and Paste the generated *CSVCodec.dll* to *C:\SoftwareAG\Apama\bin*.
+3) Copy and Paste CSVSender folder to Software AG Designer Workspace. Let's call this Workspace as **Workspace1**.
+4) Copy and PAste CSVReceiver folder to SOftware AG Designer Workspace which is *different* from Workspace1. Let's call this Workspace as **Workspace2**.
 5) Open CSVReciever in Software AG Designer from Workspace1-
 
    - Open Run Configurations. (Click on Run->Run Configurations)
@@ -36,7 +36,7 @@ First, ensure you have an install of the Apama engine; a free edition is availab
   
 **Now this First Correlator is ready to receive events.**
   
-6) Open CSVSender in Software AG Designer from WOrkspace2.
+6) Open CSVSender in Software AG Designer from Workspace2.
    - Click on Run->Run to start the Correlator to send events. 
    
 **Once this step is done this second Correlator will be sending the events    which can be verified on the console of the previously created correlator.**

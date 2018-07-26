@@ -34,9 +34,11 @@ First, ensure you have an install of the Apama engine; a free edition is availab
   
    - Click on Run.
   
-  **Now this First Correlator is ready to receive events.**
+**Now this First Correlator is ready to receive events.**
   
-4) Open CSVSender in Software AG Designer from WOrkspace2.
+6) Open CSVSender in Software AG Designer from WOrkspace2.
    - Click on Run->Run to start the Correlator to send events. 
    
-   **Once this step is done this second Correlator will be sending the events    which can be verified on the console of the previously created correlator.**
+**Once this step is done this second Correlator will be sending the events    which can be verified on the console of the previously created correlator.**
+   
+**Note** - *In this example The Message sent by CSV sender is sent to an online MQTT broker broker.hivemq.com over mqtt:/csvtest channel which is defined in MQTT.properties config file of CSVSender. The CSVReceiver recieves the message from this same broker.hivemq.com MQTT broker over the channel mqtt:/csvtest. To verify that the message is being transmitted from sender to receiver via broker.hivemq.com a tool called **Eclipse paho MQTT Utility** is available from https://www.eclipse.org/paho/.*

@@ -1,4 +1,4 @@
-# apama-streaming-analytics-connectivityPlugin-CSVCodec-cpp
+# apama-streaming-analytics-connectivity-plugin-CSVCodec-cpp
 
 Cpp based Connectivity Codec for converting to/from CSV for use with Apama.
 
